@@ -31,10 +31,10 @@ def MakeTelegrams(datfile, idxfile):
             usernamestart = entryStart + 0x1E
             username = idx[usernamestart : usernamestart+32]
 
-            #Stop username at first NULL NULL
+            #Stop message at first NULL NULL
             for j in range(0, len(username), 2):
-                if username[i:i+2] == b'\x00\x00':
-                    username = username[:i]
+                if username[j:j+2] == b'\x00\x00':
+                    username = username[:j]
                     break
             username = username.decode('UTF-16')
             
@@ -47,8 +47,8 @@ def MakeTelegrams(datfile, idxfile):
 
             #Stop message at first NULL NULL
             for j in range(0, len(message), 2):
-                if message[i:i+2] == b'\x00\x00':
-                    message = message[:i]
+                if message[j:j+2] == b'\x00\x00':
+                    message = message[:j]
                     break
             message = message.decode('UTF-16')
             
