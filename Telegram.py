@@ -13,7 +13,7 @@ class Telegram():
         self.type = telegramType
     def MakeText(self):
         if self.message.startswith('\x0A\x01'):
-            message = 'Friend request from ' + self.message[2:]
+            message = 'Friend request from ' + self.message[2:].strip()
         else:
             message = self.message
         if self.type == OUTGOING:
@@ -26,7 +26,7 @@ class Telegram():
             return ''
     def MakeCSV(self):
         if self.message.startswith('\x0A\x01'):
-            message = 'Friend request from ' + self.message[2:]
+            message = 'Friend request from ' + self.message[2:].strip()
         else:
             message = self.message
         if self.type == OUTGOING:
