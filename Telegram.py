@@ -50,6 +50,5 @@ def OutputCSV(telegrams):
     lines.append('Type, From, To, Date, Message')
     for telegram in sorted(telegrams, key=lambda x: x.timestamp):
         lines.append(telegram.MakeCSV())
-
     return '\n'.join(lines)
         
